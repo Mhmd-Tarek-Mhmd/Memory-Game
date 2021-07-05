@@ -1,0 +1,146 @@
+/*------------ Global Style ------------*/
+* {
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+/*------------ App Style ------------*/
+.game-container {
+  width: 830px;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (max-width: 829px) {
+  .game-container {
+    width: 90%;
+  }
+}
+
+/* [1] game Info */
+.game-info {
+  margin: 20px auto;
+  background: #f6f6f6;
+  padding: 20px;
+  font-size: 22px;
+  border: 2px solid #2196f3;
+  display: flex;
+  justify-content: space-between;
+}
+.game-info span {
+  font-weight: bold;
+  text-transform: capitalize;
+  font-size: 19px;
+}
+@media (max-width: 829px) {
+  .game-info {
+    flex-direction: column;
+    align-items: center;
+  }
+  .game-info .name {
+    margin-bottom: 10px;
+  }
+}
+
+/* [2] game Cards */
+.game-cards.stop-clicking {
+  pointer-events: none;
+}
+.game-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+.game-cards .card {
+  height: 200px;
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  position: relative;
+}
+@media (max-width: 829px) {
+  .game-cards {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 5px;
+  }
+  .game-cards .card {
+    height: 100px;
+  }
+}
+.game-cards .card.flipped,
+.game-cards .card.matched {
+  transform: rotateY(180deg);
+  pointer-events: none;
+}
+
+.game-cards .card > div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  backface-visibility: hidden;
+  border: 5px solid #2196f3;
+}
+.game-cards .card .front-face {
+  background-color: #333;
+  line-height: 200px;
+}
+.game-cards .card .front-face::before {
+  content: "?";
+  color: #fff;
+  font-size: 140px;
+  font-weight: bold;
+}
+@media (max-width: 829px) {
+  .game-cards .card .front-face::before {
+    font-size: 50px;
+  }
+  .game-cards .card .front-face {
+    line-height: 100px;
+  }
+}
+.game-cards .card .back-face {
+  background-color: #607d8b;
+  transform: rotateY(180deg);
+}
+.game-cards .card .back-face img {
+  width: 140px;
+  height: 140px;
+  margin-top: 30px;
+}
+@media (max-width: 829px) {
+  .game-cards .card .back-face img {
+    width: 70px;
+    height: 70px;
+    margin-top: 11px;
+  }
+}
+
+/* [3] game Interface */
+.game-interface {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(3, 169, 244, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f44336;
+  font-size: 50px;
+  font-style: italic;
+  font-weight: 500;
+}
+.game-interface span {
+  background-color: #f44336;
+  color: #fff;
+  padding: 15px 25px;
+  font-size: 30px;
+  text-align: center;
+  border-radius: 6px;
+  cursor: pointer;
+}
